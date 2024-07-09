@@ -2184,10 +2184,10 @@ mod chip {
 
     #[allow(clippy::type_complexity)]
     #[cfg(feature = "alloc")]
-    pub(crate) static mut PIN_ISR_HANDLER: [Option<Box<dyn FnMut() + Send + 'static>>; 20] =
-        [PIN_ISR_INIT; 20];
+    pub(crate) static mut PIN_ISR_HANDLER: [Option<Box<dyn FnMut() + Send + 'static>>; 22] =
+        [PIN_ISR_INIT; 22];
 
-    pub(crate) static PIN_NOTIF: [HalIsrNotification; 20] = [PIN_NOTIF_INIT; 20];
+    pub(crate) static PIN_NOTIF: [HalIsrNotification; 22] = [PIN_NOTIF_INIT; 22];
 
     // NOTE: Gpio12 - Gpio17 are used by SPI0/SPI1 for external PSRAM/SPI Flash and
     //       are not recommended for other uses
@@ -2212,6 +2212,8 @@ mod chip {
     pin!(Gpio18:18, IO, NORTC:0, NOADC:0, NODAC:0, NOTOUCH:0);
     pin!(Gpio19:19, IO, NORTC:0, NOADC:0, NODAC:0, NOTOUCH:0);
     pin!(Gpio20:20, IO, NORTC:0, NOADC:0, NODAC:0, NOTOUCH:0);
+    pin!(Gpio22:22, IO, NORTC:0, NOADC:0, NODAC:0, NOTOUCH:0);
+    pin!(Gpio25:25, IO, NORTC:0, NOADC:0, NODAC:0, NOTOUCH:0);
 
     pub struct Pins {
         pub gpio0: Gpio0,
@@ -2235,6 +2237,8 @@ mod chip {
         pub gpio18: Gpio18,
         pub gpio19: Gpio19,
         pub gpio20: Gpio20,
+        pub gpio22: Gpio22,
+        pub gpio25: Gpio25,
     }
 
     impl Pins {
@@ -2265,6 +2269,8 @@ mod chip {
                 gpio18: Gpio18::new(),
                 gpio19: Gpio19::new(),
                 gpio20: Gpio20::new(),
+                gpio22: Gpio22::new(),
+                gpio25: Gpio25::new(),
             }
         }
     }
